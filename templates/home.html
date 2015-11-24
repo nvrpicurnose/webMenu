@@ -1,0 +1,29 @@
+<h1>HOME</h1>
+<div style='width: 300px; height: auto; margin-left: 20%; font-weight:bold;'>
+	<img src='resources/aunty.png' style='width: 200px; height: auto;'>
+	<br/><br/>
+	NAME: <input type='text' ng-model='name'><br/>
+	Pay by Cash? <input type="checkbox" ng-model='cash'><br/>
+	ADDRESS: <input type='text' ng-model='address'><br/><br/>
+
+	{{name}}<br/><br/>
+	{{cash}}<br/><br/>
+	{{address}}<br/><br/>
+</div>
+
+<div>
+	SIDES:
+	<div ng-repeat='side in sides' style='display:inline-block;'>
+		<img src={{side.imageUrl}} style='height:50px; width:auto;'>
+	</div><br/><br/>
+
+	DRINKS:
+	<div ng-repeat='drink in drinks' style='display:inline-block;'>
+		<img src={{drink.imageUrl}} style='height:50px; width:auto;'>
+	</div><br/><br/>
+
+	TOPPINGS:
+	<div ng-repeat='topping in toppings' style='display:inline-block;'>
+		<img src={{topping.imageUrl}} style='height:50px; width:auto;'>
+	</div><br/>
+</div>

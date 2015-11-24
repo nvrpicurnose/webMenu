@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html>
+<head>
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' type='text/css' href='cs/menu.css'>
+	<link rel='stylesheet' type='text/css' href='cs/style.css'>
+	<title>Web Menu App</title>
+</head>
+<body>
+	
+	<div class='container' ng-app='webMenu'>
+		<div id='header' ng-include="'templates/header.html'"></div>
+			<div style='margin-top: 100px;' ui-view></div>
+		<footer ng-include="'templates/footer.html'"></footer>
+	</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+<script type='text/javascript' src="js/app.js"></script>
+<script type='text/javascript' src='js/controllers.js'></script>
+<script type='text/javascript' src='js/products.js'></script>
+
+</html>

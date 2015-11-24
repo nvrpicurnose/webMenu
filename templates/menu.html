@@ -1,0 +1,19 @@
+<h1>MENU</h1>
+
+Order: {{cartcontent()}}
+
+	<div class='food_each' ng-repeat='food in foods'>
+		<div class='food_quickinfo'>
+			<h2 style='width:70%; display: inline-block; margin-left:10px;'>{{food.name}}</h2>
+			{{food.onsale}}
+			{{food.veggie}}<br/>
+			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{food.description}}</h5>
+		</div>
+		<div class='food_thumb'>
+			<img src={{food.imageUrl}} style='width:100%; height:auto;'>
+		</div>
+		<div style='width:9%; display:inline-block;'>
+			<h3>${{food.price}}</h3><br/>
+			<button class='btn btn-success btn-block' style='height:150px;' ng-click='add(food)'>Add</button>
+		</div>
+	</div>

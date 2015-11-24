@@ -1,0 +1,19 @@
+<h1>CART</h1>
+Order: {{cartcontent()}}<br/><br/>
+
+<div style='font-size:20px; font-weight:bold; background-color:grey; text-align:center;'>
+<br/>
+Subtotal: ${{subtotal()}}<br /><br/>
+Tax: ${{tax()}}<br /><br/>
+Total: ${{total()}}<br /><br/>
+</div>
+
+<div>
+	<div ng-repeat='food in cart track by $index' style='margin-left:40%; background-color:yellow; width:200px;'>
+		<h3>{{food.name}}</h3>
+		${{food.price}}<br/><br/>
+		<img src={{food.imageUrl}} style='width:80px; height:auto;'>
+		<button class='btn btn-danger' ng-click='remove(food)'>Remove</button>
+	</div>
+</ul>
+
