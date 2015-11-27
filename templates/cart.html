@@ -1,10 +1,4 @@
 <h1>CART</h1>
-Order: {{cartcontent()}}<br/><br/>
-
-<!--
-<div ng-include src="'templates/user.html'">
-</div>
--->
 
 <div style='font-size:20px; font-weight:bold; background-color:grey; text-align:center;'>
 <br/>
@@ -17,7 +11,10 @@ Total: ${{total()}}<br /><br/>
 	<div ng-repeat='food in cart track by $index' style='margin-left:40%; background-color:yellow; width:200px;'>
 		<h3>{{food.name}}</h3>
 		${{food.price}}<br/><br/>
-		<img src={{food.imageUrl}} style='width:80px; height:auto;'>
+		<img src={{food.imageUrl}} style='width:80px; height:auto;'><br/>
+		Drink: {{food.drinks}}<br/>
+		Side: <div ng-repeat='i in food.sides | presentfilter'>{{food.sides[i.id].name}} x{{food.sides[i.id].quantity}}</div><br/>
+		Toppings: <div ng-repeat='i in food.toppings | presentfilter'>{{food.toppings[i.id].name}} x{{food.toppings[i.id].quantity}}</div>
 		<button class='btn btn-danger' ng-click='remove(food)'>Remove</button>
 	</div>
 </ul>

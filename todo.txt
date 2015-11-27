@@ -1,0 +1,10 @@
+To Do List
+-------------------------
+
+- subtotal() in cart.html page does not calculate the drink
+	- drink may require reformating on what the input type should be (select vs checkbox)
+
+- submitting a food item order should clear the form fields for drinks, sides and toppings
+
+- how to do specials? eg. 2 medium pizzas with 2 drinks and dipping sauce for $14.99
+
