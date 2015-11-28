@@ -4,6 +4,7 @@ angular.module('webMenu')
 	$scope.cartcontent = function(){
 		return ShoppingCart.cartcontent();
 	};
+	$scope.cart = $scope.cartcontent();
 
 	$scope.subtotal = function(){
 		return ShoppingCart.subtotal();

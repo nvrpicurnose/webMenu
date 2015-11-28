@@ -13,6 +13,14 @@ angular.module('webMenu')
 		},
 		getid: function(){
 			return selected_food.id;
+		},
+		add_drink: function(drink){
+			drink.quantity = 1;
+			selected_food.drinks.push(drink);
+		},
+		remove_drink: function(drink){
+			drink.quantity =-1;
+			selected_food.drinks.push(drink);
 		}
 	}
 });

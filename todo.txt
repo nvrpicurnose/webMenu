@@ -1,8 +1,7 @@
 To Do List
 -------------------------
-
-- subtotal() in cart.html page does not calculate the drink
-	- drink may require reformating on what the input type should be (select vs checkbox)
+- food data is not unique per food orderitem. instead, all food orderitems use the same array!
+		- changing the drink with your second food orderitem will also change your first's drink
 
 - submitting a food item order should clear the form fields for drinks, sides and toppings
 

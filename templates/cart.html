@@ -1,5 +1,5 @@
 <h1>CART</h1>
-
+{{}}
 <div style='font-size:20px; font-weight:bold; background-color:grey; text-align:center;'>
 <br/>
 Subtotal: ${{subtotal()}}<br /><br/>
@@ -12,7 +12,7 @@ Total: ${{total()}}<br /><br/>
 		<h3>{{food.name}}</h3>
 		${{food.price}}<br/><br/>
 		<img src={{food.imageUrl}} style='width:80px; height:auto;'><br/>
-		Drink: {{food.drinks}}<br/>
+		Drink: <div ng-repeat='i in food.drinks | presentfilter'>{{food.drinks[i.id].name}} x{{food.drinks[i.id].quantity}}</div><br/>
 		Side: <div ng-repeat='i in food.sides | presentfilter'>{{food.sides[i.id].name}} x{{food.sides[i.id].quantity}}</div><br/>
 		Toppings: <div ng-repeat='i in food.toppings | presentfilter'>{{food.toppings[i.id].name}} x{{food.toppings[i.id].quantity}}</div>
 		<button class='btn btn-danger' ng-click='remove(food)'>Remove</button>

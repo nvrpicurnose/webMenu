@@ -20,7 +20,10 @@ angular.module('webMenu')
 			var subtotal = 0;
 			for(i=0; i<shopcart.length; i++){
 				subtotal += shopcart[i].price;
-				others = 0;
+				var others = 0;
+				for(d=0; d<shopcart[i].drinks.length; d++){
+					others += (shopcart[i].drinks[d].indv_price * shopcart[i].drinks[d].quantity);
+				};
 				for(t=0; t<shopcart[i].toppings.length; t++){
 					others += (shopcart[i].toppings[t].indv_price * shopcart[i].toppings[t].quantity);
 				};

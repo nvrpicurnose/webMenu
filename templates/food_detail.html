@@ -8,7 +8,28 @@
 				{{food.toppings}}
 			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{food.description}}</h5>
 
-			
+
+		<div class='customization'>
+			<div id='drinks'>
+				<div class='drink' ng-repeat='drink in drinks track by $index'>
+					<input type='number' ng-model='drink.quantity'>{{drink.name}} x{{drink.quantity}}
+				</div>
+			</div><br/>
+
+			<div id='sides'>
+				<div class='sides' ng-repeat='side in sides track by $index'>
+					<input type='number' ng-model='side.quantity'>{{side.name}} x{{side.quantity}}
+				</div>
+			</div><br/>
+
+			<div id='toppings'>
+				<div class='toppings' ng-repeat='topping in toppings track by $index'>
+					<input type='number' ng-model='topping.quantity'>{{topping.name}} x{{topping.quantity}}
+				</div>
+			</div>
+
+			<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
+		</div>
 
 		<div class='food_thumb'>
 			<img src={{food.imageUrl}} style='width:100%; height:auto;'>
@@ -18,5 +39,5 @@
 		</div>
 </div>
 
-
-{{all}}
+THIS FOOD ITEM: {{only_this}}<br/><br/><br/><br/>
+SHOPPING CART: {{all_this}}
