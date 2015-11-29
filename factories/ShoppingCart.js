@@ -1,6 +1,6 @@
 angular.module('webMenu')
 
-.factory('ShoppingCart', function(){
+.service('ShoppingCart', function(){
 	var shopcart = [];
 	var tax = 0;
 	var subTotal = 0;

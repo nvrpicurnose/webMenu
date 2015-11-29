@@ -1,6 +1,6 @@
 angular.module('webMenu')
 
-.factory('Foods', function(){
+.service('Foods', function(){
 	var allfoods = [
 		{name:'Butter Chicken',
 			id: 0,
@@ -10,6 +10,7 @@ angular.module('webMenu')
 			description: 'Delicious butter chicken marinated in an authentic Indian sauce from Uttar Pradesh province. Enjoy with a side of rice and salad.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -21,6 +22,7 @@ angular.module('webMenu')
 			description: 'Kebab is delicious and kebab is nutricious. Sure its just meat on a stick but it tastes so good. Enjoy with a side of rice and salad.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -32,6 +34,7 @@ angular.module('webMenu')
 			description: 'Tiki Masala is a real treat for people who dont eat much ethnic food. I personally dont know what it is but Ill know when I see picture.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -43,6 +46,7 @@ angular.module('webMenu')
 			description: 'Fish curry is so good you dont understand. I catch my own fish but you can buy local fresh. Enjoy with a side of rice and salad.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -54,6 +58,7 @@ angular.module('webMenu')
 			description: 'Tandoori chicken, the infamous and delicious. This is like the brown version of Kung Pow Chicken. Enjoy with a side of rice and salad.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -76,6 +81,7 @@ angular.module('webMenu')
 			description: 'Goat Leg curry served with a generous heaping of rice. Those little carb sticks just soak up that delicious curry. Enjoy with a side of rice and salad.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -87,6 +93,7 @@ angular.module('webMenu')
 			description: 'Classic! Shwarama is my to-go food if I want some deep rich meaty taste with fresh veggies and aromatic middle eastern sauces. Im so hungry right now.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []},
@@ -98,6 +105,7 @@ angular.module('webMenu')
 			description: 'Now this is something you dont see often. Delicious fresh shrimp, surf clam, tipilia fillet and calamari soaked over a bed of veggies.',
 			onsale: false,
 			combo: true,
+			no_negatives: true,
 			drinks: [],
 			sides: [],
 			toppings: []}

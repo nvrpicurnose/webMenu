@@ -1,6 +1,6 @@
 angular.module('webMenu')
 
-.factory('FoodOrder', function(){
+.service('FoodOrder', function(){
 	var selected_food = 'food';
 
 	return {

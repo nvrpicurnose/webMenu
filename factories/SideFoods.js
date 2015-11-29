@@ -1,6 +1,6 @@
 angular.module('webMenu')
 
-.factory('SideFoods', function(){
+.service('SideFoods', function(){
 	var sides = [
 		{name:'Fries', id:0, indv_price: 2.99, quantity:0, imageUrl:'http://maximizedlivingdrpattison.com/Media/DrMorganPattison/images/French_fries.jpg'},
 		{name:'Rice', id:1, indv_price: 2.99, quantity:0, imageUrl:'http://foodpictures.mobi/wp-content/uploads/indian-saffron-rice-2.'},

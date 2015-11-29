@@ -8,26 +8,34 @@
 				{{food.toppings}}
 			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{food.description}}</h5>
 
+		<button class='btn btn-success btn-lrg' id='combo_button' ng-click='toggleCombo()'>Combo: {{combo}}</button> <-- FIX THIS TO HAVE ACTIVE/INACTIVE CSS CLASS
 
 		<div class='customization'>
-			<div id='drinks'>
+			<div id='drinks' ng-hide='!isCombo()' class='ng-hide'>
 				<div class='drink' ng-repeat='drink in drinks track by $index'>
-					<input type='number' ng-model='drink.quantity'>{{drink.name}} x{{drink.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='add_drink(drink);calculate_drink()' ng-disabled='maxed_drink'>+</button>
+						{{drink.name}} x{{drink.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_drink(drink); calculate_drink()' ng-disabled='drink.no_negatives'>-</button>
 				</div>
 			</div><br/>
 
-			<div id='sides'>
+			<div id='sides' ng-hide='!isCombo()' class='ng-hide'>
 				<div class='sides' ng-repeat='side in sides track by $index'>
-					<input type='number' ng-model='side.quantity'>{{side.name}} x{{side.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='add_side(side);calculate_side()' ng-disabled='maxed_side'>+</button>
+						{{side.name}} x{{side.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_side(side); calculate_side()' ng-disabled='side.no_negatives'>-</button>
 				</div>
 			</div><br/>
 
 			<div id='toppings'>
 				<div class='toppings' ng-repeat='topping in toppings track by $index'>
-					<input type='number' ng-model='topping.quantity'>{{topping.name}} x{{topping.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
+						{{topping.name}} x{{topping.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
 				</div>
 			</div>
 
+			<button class='btn btn-warning btn-lrg' ng-click='clearfood();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
 			<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
 		</div>
 
@@ -38,6 +46,3 @@
 			<h3>${{food.price}}</h3><br/>
 		</div>
 </div>
-
-THIS FOOD ITEM: {{only_this}}<br/><br/><br/><br/>
-SHOPPING CART: {{all_this}}
