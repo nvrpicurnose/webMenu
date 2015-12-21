@@ -36,6 +36,8 @@ angular.module('webMenu')
 		{name:'guacamole', id:13, type:'sauce', indv_price: 0.99, quantity:0, imageUrl:'http://162.61.226.249/PicOriginal/P63482612080919_5.jpg'},
 	];
 
+	var addons = [];
+
 	return {
 		get_sides: function(){
 			return sides;

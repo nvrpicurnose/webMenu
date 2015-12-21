@@ -30,6 +30,9 @@ angular.module('webMenu')
 				for(s=0; s<shopcart[i].sides.length; s++){
 					others += (shopcart[i].sides[s].indv_price * shopcart[i].sides[s].quantity);
 				};
+				for(a=0; a<shopcart[i].addons.length; a++){
+					others += (shopcart[i].addons[a].indv_price);
+				};
 				subtotal += others;
 			}
 			subTotal = subtotal;

@@ -38,13 +38,27 @@
 		<div style='width:9%; display:inline-block;'>
 			<h3>${{food.price}}</h3><br/>
 		</div>
-
 		<br/><br/>
-		<div class='coupon_code_enter'>
-			<input type='text' placeholder='COUPON-CODE' name='Coupon Code' ng-model='couponcode'>
-			<button class='btn btn-alert' ng-click='applycoupon(couponcode, food)'>APPLY</button>
+
+		<div>
+			<div class='coupon_code_enter'>
+				<input type='text' placeholder='COUPON-CODE' name='Coupon Code' ng-model='couponcode'>
+				<button class='btn btn-warning' ng-click='applycoupon(couponcode, food)'>APPLY</button>
+			</div>
+			<div id='Addon_drink' ng-hide='!isPaidAddonDrink()' class='ng-hide'>
+				<button class='btn btn-sml btn-danger' ng-click='exitPaidAddonDrink()'>Exit +Drinks</button>
+				<div class='drink' ng-repeat='drink in drinks track by $index'>
+					<button class='btn btn-primary btn-med' ng-click='add_paidDrink(couponcode, drink); calculate_drink()'>{{drink.name}}</button>
+				</div>
+			</div><br/>
+			<div id='Addon_side' ng-hide='!isPaidAddonSide()' class='ng-hide'>
+				<button class='btn btn-sml btn-danger' ng-click='exitPaidAddonSide()'>Exit +Sides</button>
+				<div class='side' ng-repeat='side in sides track by $index'>
+					<button class='btn btn-primary btn-med' ng-click='add_paidSide(couponcode, side); calculate_side()'>{{side.name}}</button>
+				</div>
+			</div><br/>
 		</div>
-		<br/><br/>
 
+		<br/><br/>
 		<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
 </div>

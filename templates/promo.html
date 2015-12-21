@@ -13,3 +13,14 @@
 		</div>
 	</div>
 
+	<div class='coupon_each' ng-repeat='coupon in coupons'>
+		<div class='food_quickinfo'>
+			<h2 style='width:70%; display: inline-block; margin-left:10px;'>{{coupon.name}}</h2><br/>
+			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{coupon.valid_foods}}</h5>
+			<div class='food_thumb'>
+				<img src={{coupon.imageUrl}} style='width:100%; height:auto;'>
+			</div>
+		</div>
+		</div>
+	</div>
+

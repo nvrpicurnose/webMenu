@@ -1,7 +1,8 @@
 angular.module('webMenu')
 
-.controller('promoCtrl', ['$scope', 'Promotions', 'FoodOrder', function($scope, Promotions, FoodOrder){
+.controller('promoCtrl', ['$scope', 'Promotions', 'Coupons', 'FoodOrder', function($scope, Promotions, Coupons, FoodOrder){
 	$scope.promos = Promotions.get();
+	$scope.coupons = Coupons.get();
 
 	$scope.enterPromo = function(promo){
 		FoodOrder.setpromo(promo);

@@ -80,9 +80,9 @@ angular.module('webMenu')
 		{
 			name: '$1 Drink',
 			promo_type: 'paid_addon',
-			coupon_code: '50%OFFSIDE',
+			coupon_code: '$1DRINK',
 			description: '',
-			imageUrl:'http://hostedmedia.reimanpub.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg',
+			imageUrl:'http://www.mcdonalds.ca/content/dam/Canada/en/Promo/2014-DDD/imgs/coke.png',
 			valid_foods: [1,3,4,5],
 			add_drink_limit: 0,
 			add_side_limit: 0,
@@ -105,7 +105,7 @@ angular.module('webMenu')
 		{
 			name: '50% Side',
 			promo_type: 'paid_addon',
-			coupon_code: 'FREESIDE',
+			coupon_code: '50%SIDE',
 			description: '',
 			imageUrl:'http://hostedmedia.reimanpub.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg',
 			valid_foods: [1,3,4,5],

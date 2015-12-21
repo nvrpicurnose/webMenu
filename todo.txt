@@ -13,3 +13,13 @@ To Do List
 - dealing with max free toppings vs paid toppings [EASY]
 
 - transfer of database onto backend [MEDIUM w/effort]
+
+- differntiate between solo food price and combo food price [EASY]
+
+- allow for additional toppings at extra cost ...note that additional sides and drinks should be ordered seperately [MEDIUM] 
+
+- cart.html does not show addons for each food item. ng-repeat does not work [FIX ERROR]
+
+- foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
+
+- should the coupons on Promo.html link to a list of valid_foods that the coupon applies to? [EASY]
