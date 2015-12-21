@@ -1,0 +1,28 @@
+{
+  "name": "kangze",
+  "version": "1.0.0",
+  "description": "A web app for ordering food from resturants online",
+  "main": "express_server.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "angular-ui-router": "^0.2.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvrpicurnose/webMenu.git"
+  },
+  "engines" : { 
+    "node" : "4.2.2" 
+  },
+  "author": "kangze_huang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvrpicurnose/webMenu/issues"
+  },
+  "homepage": "https://github.com/nvrpicurnose/webMenu#readme"
+}

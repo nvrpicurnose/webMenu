@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html>
+<head>
+
+	<!-- Load the stylesheets -->
+	<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' type='text/css' href='css/menu.css'>
+	<link rel='stylesheet' type='text/css' href='css/style.css'>
+	<title>Web Menu App</title>
+</head>
+<body>
+	
+	<div class='container' ng-app='webMenu'>
+		<div id='header' ng-include="'templates/header.html'"></div>
+			<div style='margin-top: 100px;' ui-view></div>
+		<footer ng-include="'templates/footer.html'"></footer>
+	</div>
+
+</body>
+
+<!-- Load the angular, jquery & ui.router scripts from CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+
+<!-- Load app.js to define app-->
+<script type='text/javascript' src="app.js"></script>
+
+<!-- Load the store profile files & promotional offers -->
+<script type='text/javascript' src='store_profile/Store_Profile.js'></script>
+<script type='text/javascript' src='store_profile/Promotions.js'></script>
+<script type='text/javascript' src='store_profile/Coupons.js'></script>
+
+<!-- Load the Angular javascript factories -->
+<script type='text/javascript' src='factories/Foods.js'></script>
+<script type='text/javascript' src='factories/FoodOrder.js'></script>
+<script type='text/javascript' src='factories/ShoppingCart.js'></script>
+<script type='text/javascript' src='factories/SideFoods.js'></script>
+
+<!-- Load the Angular javascript Ctrl files -->
+<script type='text/javascript' src='controllers/menuCtrl.js'></script>
+<script type='text/javascript' src='controllers/homeCtrl.js'></script>
+<script type='text/javascript' src='controllers/cartCtrl.js'></script>
+<script type='text/javascript' src='controllers/foodCtrl.js'></script>
+<script type='text/javascript' src='controllers/promoCtrl.js'></script>
+<script type='text/javascript' src='controllers/specialCtrl.js'></script>
+
+<!-- Load the Angular javascript filters -->
+<script type='text/javascript' src='filters/presentfilter.js'></script>
+
+</html>

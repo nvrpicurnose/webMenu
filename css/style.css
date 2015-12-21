@@ -1,0 +1,15 @@
+body {
+	background-image: url('http://ftextures.com/textures/Damaged-wood-plank-texture.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#header {
+	position:fixed; 
+	min-width:80%; 
+	margin-top: 15px;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: rgba(0,0,0,0.5);
+}
