@@ -2,10 +2,14 @@ angular.module('webMenu')
 
 .service('FoodOrder', function(){
 	var selected_food = 'food';
+	var selected_promo = 'promo';
 
 	return {
 		get: function(){
 			return selected_food;
+		},
+		getpromo: function(){
+			return selected_promo;
 		},
 		setfood: function(food){
 			selected_food = food;
@@ -14,13 +18,12 @@ angular.module('webMenu')
 		getid: function(){
 			return selected_food.id;
 		},
-		add_drink: function(drink){
-			drink.quantity = 1;
-			selected_food.drinks.push(drink);
+		setpromo: function(promo){
+			selected_promo = promo;
+			return selected_promo;
 		},
-		remove_drink: function(drink){
-			drink.quantity =-1;
-			selected_food.drinks.push(drink);
+		getpromoid: function(){
+			return selected_promo.id;
 		}
 	}
 });

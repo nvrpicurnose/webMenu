@@ -1,0 +1,15 @@
+<h1>Promotions</h1>
+	<div class='promo_each' ng-repeat='promo in promos'>
+		<div class='food_quickinfo'>
+			<h2 style='width:70%; display: inline-block; margin-left:10px;'>{{promo.name}}</h2><br/>
+			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{promo.description}}</h5>
+		</div>
+		<div class='food_thumb'>
+			<img src={{promo.imageUrl}} style='width:100%; height:auto;'>
+		</div>
+		<div style='width:9%; display:inline-block;'>
+			<h3>${{promo.price}}</h3><br/>
+			<button class='btn btn-success btn-block' style='height:150px;' ng-click='enterPromo(promo)' href='#/promo/{{promo.id}}'>See More</button><br/>
+		</div>
+	</div>
+

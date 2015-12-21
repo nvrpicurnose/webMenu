@@ -1,18 +1,40 @@
 <h1>HOME</h1>
+
 <div style='width: 300px; height: auto; margin-left: 20%; font-weight:bold; display:inline-block;'>
 	<img src='resources/aunty.png' style='width: 200px; height: auto;'>
-	<br/><br/>
-	NAME: <input type='text' ng-model='name'><br/>
-	Pay by Cash? <input type="checkbox" ng-model='cash'><br/>
-	ADDRESS: <input type='text' ng-model='address'><br/><br/>
-
-	{{name}}<br/><br/>
-	{{cash}}<br/><br/>
-	{{address}}<br/><br/>
 </div>
 
+<div style='font-weight:bold; background-color: grey;'>
+	STORE: {{store.name}}<br/>
+	LOCATION: {{store.location}}<br/>
+	TELEPHONE: {{store.telephone}}<br/>
+	EMAIL: {{store.email}}<br/>
+	DELIERY: {{store.delivery}}<br/>
+	OPEN: {{store.open}}<br/>
+</div>
+<div style='font-weight:bold; background-color: grey; border:1px solid black;'>
+	<table>
+		<tr>
+			<th> </th>
+			<th> Open </th>
+			<th> Close </th>
+		</tr>
+		<tr ng-repeat='day in days'>
+			<td>{{day.day}}</td>
+			<td>{{day.start}}am - </td>
+			<td> {{day.end - 12}}pm</td>
+		</tr>
+	</table>
+</div>
 
 <div style='display:inline-block;'><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8188.9735049268165!2d-80.53733831326139!3d43.47647515133847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x9d0e33737d98da5e!2sAunty&#39;s+Kitchen!5e0!3m2!1sen!2sca!4v1448424648159" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+
+<div style='border:2px solid red;'>
+	<div ng-repeat='promo in promos' style='border:1px solid blue;'>
+		<h2>{{promo.name}}</h2><h1>${{promo.price}}</br>
+		<p>{{promo.description}}</p><br/>
+	</div>
+</div>
 
 <div>
 	SIDES:

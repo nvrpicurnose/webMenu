@@ -1,9 +1,15 @@
 To Do List
 -------------------------
-- food data is not unique per food orderitem. instead, all food orderitems use the same array!
-		- changing the drink with your second food orderitem will also change your first's drink
 
-- submitting a food item order should clear the form fields for drinks, sides and toppings
+- how to do specials? Should it be a seperate module? [CHALLENGE]
+		- Case 1: Simple discount, 50% off select combos
+		- Case 2: Multiple Items Special, 2 drinks and 2 medium pizzas
+		- Case 3: Free addon with coupon code
 
-- how to do specials? eg. 2 medium pizzas with 2 drinks and dipping sauce for $14.99
+- integration of Google Maps address auto-complete API [EASY w/effort]
 
+- storage of transaction receipts [EASY]
+
+- dealing with max free toppings vs paid toppings [EASY]
+
+- transfer of database onto backend [MEDIUM w/effort]

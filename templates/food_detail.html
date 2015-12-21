@@ -1,14 +1,10 @@
+<button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>< Back</button><br/>
 <h1>{{food.name}}</h1>
 
 <div class='food_detailinfo'>
-			<h2 style='width:70%; display: inline-block; margin-left:10px;'>{{food.name}}</h2><br/>
-				{{food.onsale}}
-				{{food.veggie}}
-				{{food.sides}}
-				{{food.toppings}}
-			<h5 style='text-align:center; margin-top:50px; width:70%; margin-left:10%;'>{{food.description}}</h5>
 
-		<button class='btn btn-success btn-lrg' id='combo_button' ng-click='toggleCombo()'>Combo: {{combo}}</button> <-- FIX THIS TO HAVE ACTIVE/INACTIVE CSS CLASS
+		<button class='btn btn-success btn-lrg' id='combo_button' ng-click='toggleCombo()'>Combo: {{combo}}</button> <-- FIX THIS TO HAVE ACTIVE/INACTIVE CSS CLASS <br/>
+		<button class='btn btn-warning btn-lrg' ng-click='clearfood();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
 
 		<div class='customization'>
 			<div id='drinks' ng-hide='!isCombo()' class='ng-hide'>
@@ -34,9 +30,6 @@
 					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
 				</div>
 			</div>
-
-			<button class='btn btn-warning btn-lrg' ng-click='clearfood();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
-			<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
 		</div>
 
 		<div class='food_thumb'>
@@ -45,4 +38,13 @@
 		<div style='width:9%; display:inline-block;'>
 			<h3>${{food.price}}</h3><br/>
 		</div>
+
+		<br/><br/>
+		<div class='coupon_code_enter'>
+			<input type='text' placeholder='COUPON-CODE' name='Coupon Code' ng-model='couponcode'>
+			<button class='btn btn-alert' ng-click='applycoupon(couponcode, food)'>APPLY</button>
+		</div>
+		<br/><br/>
+
+		<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
 </div>

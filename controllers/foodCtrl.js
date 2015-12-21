@@ -1,6 +1,6 @@
 angular.module('webMenu')
 
-.controller('foodCtrl', ['$scope', 'SideFoods', 'ShoppingCart', 'FoodOrder', function($scope, SideFoods, ShoppingCart, FoodOrder){
+.controller('foodCtrl', ['$scope', 'SideFoods', 'ShoppingCart', 'FoodOrder', 'Coupons', function($scope, SideFoods, ShoppingCart, FoodOrder, Coupons){
 // grab all the information
 $scope.food = FoodOrder.get();
 	$scope.all_drinks = SideFoods.get_drinks();
@@ -9,8 +9,42 @@ $scope.food = FoodOrder.get();
 		$scope.sides = angular.copy($scope.all_sides,$scope.sides);
 			$scope.all_toppings = SideFoods.get_toppings();
 			$scope.toppings = angular.copy($scope.all_toppings,$scope.toppings);
-	
-	// to submit the order. will save into a new food object that is passed to the ShoppingCart
+	// to go back to menu
+	$scope.back = function(){
+		window.location.assign('#/menu');
+		console.log('back');
+	};
+
+	//applying any coupon codes
+	$scope.applycoupon = function(couponcode, food){
+		//checking for validity of coupon
+		var valid_coupon = Coupons.valid_coupon(couponcode, food);
+		if(valid_coupon == true){
+			// actual retreival of coupon (promo) details if valid
+			var coupon = Coupons.retreive_coupon(couponcode);
+
+			// change the max limit for drinks, sides and toppings (if applicable). Also recalculates max limits
+			$scope.max_drinks += coupon.add_drink_limit;
+			$scope.max_sides += coupon.add_side_limit;
+			$scope.max_toppings += coupon.add_topping_limit;
+			$scope.calculate_drink();
+			$scope.calculate_side();
+			$scope.calculate_topping();
+
+			// change the food price if applicable
+			$scope.food.price -= coupon.food_discount_dollar;
+			$scope.food.price -= ($scope.food.price*coupon.food_discount_percent);
+
+			// for paid_addon coupons. will display popup box
+
+			
+			console.log(couponcode + ' is redeemable as ' + coupon.name);
+		}else{
+			console.log('The coupon code does not exist or must be entered with final order.');
+		};
+	};
+
+	// to submit the order. Will save into a new food object that is passed to the ShoppingCart
 	$scope.submitOrder = function(){
 		$scope.food.drinks = $scope.drinks;
 		$scope.food.sides = $scope.sides;
@@ -40,7 +74,7 @@ $scope.food = FoodOrder.get();
 	};
 
 	// To set max drinks and disable form when reached
-	$scope.max_drinks = 3;
+	$scope.max_drinks = $scope.food.max_drinks;
 	$scope.maxed_drink = false;
 	$scope.no_negatives = [];
 	$scope.add_drink = function(drink){
@@ -67,7 +101,7 @@ $scope.food = FoodOrder.get();
 	};
 
 	// To set max sides and disable form when reached
-	$scope.max_sides = 3;
+	$scope.max_sides = $scope.food.max_sides;
 	$scope.maxed_side = false;
 	$scope.no_negatives = [];
 	$scope.add_side = function(side){
@@ -94,7 +128,7 @@ $scope.food = FoodOrder.get();
 	};
 
 	// To set max toppings and disable form when reached
-	$scope.max_toppings = 3;
+	$scope.max_toppings = $scope.food.max_toppings;
 	$scope.maxed_topping = false;
 	$scope.no_negatives = [];
 	$scope.add_topping = function(topping){

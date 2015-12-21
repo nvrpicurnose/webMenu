@@ -19,11 +19,19 @@ webMenu.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvi
 			templateUrl: 'templates/cart.html',
 			controller: 'cartCtrl'
 		})
-
-		// why is this not working?? even manually changing url to #/menu/1 will not property use ui.router
 		.state('food', {
 			url: '/menu/:id',
 			templateUrl: 'templates/food_detail.html',
 			controller: 'foodCtrl'
+		})
+		.state('promo', {
+			url: '/promo',
+			templateUrl: 'templates/promo.html',
+			controller: 'promoCtrl'
+		})
+		.state('special', {
+			url: '/promo/:id',
+			templateUrl: 'templates/special.html',
+			controller: 'specialCtrl'
 		});
 }]);
