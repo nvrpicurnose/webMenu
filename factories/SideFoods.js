@@ -36,6 +36,11 @@ angular.module('webMenu')
 		{name:'guacamole', id:13, type:'sauce', indv_price: 0.99, quantity:0, imageUrl:'http://162.61.226.249/PicOriginal/P63482612080919_5.jpg'},
 	];
 
+	var upgrades = [
+		{name:'Upgrade to Large Drink', indv_price:0.99},
+		{name:'Upgrade to Large Side', indv_price:0.99},
+	];
+
 	var addons = [];
 
 	return {
@@ -47,6 +52,9 @@ angular.module('webMenu')
 		},
 		get_toppings: function(){
 			return toppings;
+		},
+		get_upgrades: function(){
+			return upgrades;
 		}
 	}
 });	

@@ -1,5 +1,18 @@
-<button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>< Back</button><br/>
+<button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>Back</button><br/>
 <h1>{{food.name}}</h1>
+
+<div ng-if='combo == true'>
+	<select ng-model='size_selection' ng-change='change_size(size_selection)'>
+		<option ng-repeat='size in sizes' value='{{size.combosizeprice}}' ng-click='set_size(size)'>{{size.portion}}</option>
+	</select>
+	{{food.current_size}} ${{size_selection}}
+</div>
+<div ng-if='combo == false'>
+	<select ng-model='size_selection' ng-change='change_size(size_selection)'>
+		<option ng-repeat='size in sizes' value='{{size.sizeprice}}' ng-click='set_size(size)'>{{size.portion}}</option>
+	</select>
+	{{food.current_size}} ${{size_selection}}
+</div>
 
 <div class='food_detailinfo'>
 
@@ -20,6 +33,14 @@
 					<button class='btn btn-primary btn-sml' ng-click='add_side(side);calculate_side()' ng-disabled='maxed_side'>+</button>
 						{{side.name}} x{{side.quantity}}
 					<button class='btn btn-primary btn-sml' ng-click='remove_side(side); calculate_side()' ng-disabled='side.no_negatives'>-</button>
+				</div>
+
+				<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
+				<div>
+					UPGRADES:<br/>
+					<div ng-repeat='upgrade in upgrades track by $index'>
+						<button class='btn btn-primary' ng-click='upgrade_addon(upgrade)'>{{upgrade.name}} for ${{upgrade.indv_price}}</button>
+					</div>
 				</div>
 			</div><br/>
 

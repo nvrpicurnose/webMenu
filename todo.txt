@@ -23,7 +23,4 @@ To Do List
 
 
 
-
-
-- how to do sizes for foods, drinks and sides [MEDIUM]
-- differntiate between solo food price and combo food price [EASY]
+- sizes of drinks/sides...aka upgrades. Basic upgrades are implemented, but no limits on how many. See food_detail.html for more details [MEDIUM]

@@ -19,24 +19,24 @@ angular.module('webMenu')
 		subtotal: function(){
 			var subtotal = 0;
 			for(i=0; i<shopcart.length; i++){
-				subtotal += shopcart[i].price;
+				subtotal += Number(shopcart[i].price);
 				var others = 0;
 				for(d=0; d<shopcart[i].drinks.length; d++){
-					others += (shopcart[i].drinks[d].indv_price * shopcart[i].drinks[d].quantity);
+					others += Number(shopcart[i].drinks[d].indv_price * shopcart[i].drinks[d].quantity);
 				};
 				for(t=0; t<shopcart[i].toppings.length; t++){
-					others += (shopcart[i].toppings[t].indv_price * shopcart[i].toppings[t].quantity);
+					others += Number(shopcart[i].toppings[t].indv_price * shopcart[i].toppings[t].quantity);
 				};
 				for(s=0; s<shopcart[i].sides.length; s++){
-					others += (shopcart[i].sides[s].indv_price * shopcart[i].sides[s].quantity);
+					others += Number(shopcart[i].sides[s].indv_price * shopcart[i].sides[s].quantity);
 				};
 				for(a=0; a<shopcart[i].addons.length; a++){
-					others += (shopcart[i].addons[a].indv_price);
+					others += Number(shopcart[i].addons[a].indv_price);
 				};
 				subtotal += others;
 			}
 			subTotal = subtotal;
-			return subtotal;
+			return subTotal;
 		},
 		tax: function(){
 			tax = subTotal * 0.13;

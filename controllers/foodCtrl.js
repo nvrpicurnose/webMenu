@@ -3,9 +3,11 @@ angular.module('webMenu')
 .controller('foodCtrl', ['$scope', 'SideFoods', 'ShoppingCart', 'FoodOrder', 'Coupons', function($scope, SideFoods, ShoppingCart, FoodOrder, Coupons){
 // grab all the information
 $scope.food = FoodOrder.get();
+$scope.upgrades = SideFoods.get_upgrades();
 $scope.foodprice = FoodOrder.original_price(); //this allows for coupon price manipulation
 $scope.used_coupons = [];
 $scope.addons = [];
+$scope.combo = true;
 	$scope.all_drinks = SideFoods.get_drinks();
 	$scope.drinks = angular.copy($scope.all_drinks,$scope.drinks);
 		$scope.all_sides = SideFoods.get_sides();
@@ -19,9 +21,16 @@ $scope.addons = [];
 		console.log('back');
 	};
 
-
-
-
+	//choosing the food item size
+	$scope.sizes = $scope.food.sizes;
+	// setting the size price
+	$scope.change_size = function(size_selection){
+		$scope.foodprice = size_selection;
+	};
+	// setting the size
+	$scope.set_size = function(size){
+		$scope.food.current_size = size.portion;
+	};
 
 
 
@@ -151,10 +160,12 @@ $scope.addons = [];
 		$scope.food.toppings = $scope.toppings;
 		$scope.food.addons = $scope.addons;
 		$scope.food.price = $scope.foodprice;
+		$scope.food.combo = $scope.combo;
 		$scope.finalfood = angular.copy($scope.food, $scope.finalfood);
 
 		ShoppingCart.add($scope.finalfood);
 		alert('Your order was added to the cart');
+		console.log($scope.finalfood.price);
 		$scope.clearfood();
 	};
 
@@ -162,8 +173,7 @@ $scope.addons = [];
 	$scope.clearfood = function(){
 		$scope.food = FoodOrder.get();
 		$scope.foodprice = FoodOrder.original_price();
-		console.log(FoodOrder.original_price());
-		console.log($scope.food.price);
+		$scope.size_selection = '';
 		$scope.finalfood = '';
 		$scope.used_coupons = [];
 		$scope.addons = [];
@@ -181,7 +191,6 @@ $scope.addons = [];
 	};
 
 	// to determine if combo. clicking will hide drinks,sides&toppings and clear all quantities
-	$scope.combo = true;
 	$scope.toggleCombo = function(){
 		$scope.combo = !$scope.combo;
 			$scope.drinks = angular.copy($scope.all_drinks,$scope.drinks);
@@ -204,6 +213,9 @@ $scope.addons = [];
 	$scope.max_drinks = $scope.food.max_drinks;
 	$scope.maxed_drink = false;
 	$scope.add_drink = function(drink){
+		if($scope.combo==true){
+			$scope.drinks[drink.id].indv_price = 0;
+		}
 		$scope.drinks[drink.id].quantity += 1;
 		$scope.drinks[drink.id].no_negatives = false;
 	};
@@ -230,6 +242,9 @@ $scope.addons = [];
 	$scope.max_sides = $scope.food.max_sides;
 	$scope.maxed_side = false;
 	$scope.add_side = function(side){
+		if($scope.combo==true){
+			$scope.sides[side.id].indv_price = 0;
+		}
 		$scope.sides[side.id].quantity += 1;
 		$scope.sides[side.id].no_negatives = false;
 	};
@@ -278,4 +293,8 @@ $scope.addons = [];
 		};
 	};
 
+	// to upgrade drinks or sides to a larger size
+	$scope.upgrade_addon = function(upgrade){
+		$scope.addons.push(upgrade);
+	};
 }]);
