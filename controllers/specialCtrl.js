@@ -51,7 +51,6 @@ angular.module('webMenu')
 		$scope.max_sides = $scope.promo.sizes[$scope.chosen_size].side_limit;
 		$scope.sides = angular.copy($scope.all_sides,$scope.sides);
 		$scope.calculate_side();
-		$scope.max_sides = $scope.promo.sizes[$scope.chosen_size].topping_limit;
 		$scope.toppings = angular.copy($scope.all_toppings,$scope.toppings);
 		$scope.calculate_topping();
 	};
@@ -237,7 +236,6 @@ angular.module('webMenu')
 		$scope.drinks[drink.id].indv_price = 0;
 		$scope.drinks[drink.id].quantity += 1;
 		$scope.drinks[drink.id].no_negatives = false;
-		console.log($scope.max_drinks);
 	};
 	$scope.remove_drink = function(drink){
 		if($scope.drinks[drink.id].quantity <1){
