@@ -1,5 +1,6 @@
 <h1>CART</h1>
-{{}}
+
+
 <div style='font-size:20px; font-weight:bold; background-color:grey; text-align:center;'>
 <br/>
 Subtotal: ${{subtotal()}}<br /><br/>
@@ -16,7 +17,18 @@ Total: ${{total()}}<br /><br/>
 		Sides: <div ng-repeat='i in food.sides | presentfilter'>{{food.sides[i.id].name}} x{{food.sides[i.id].quantity}}</div><br/>
 		Toppings: <div ng-repeat='i in food.toppings | presentfilter'>{{food.toppings[i.id].name}} x{{food.toppings[i.id].quantity}}</div><br>
 		Addons: <div ng-repeat='i in food.addons'>{{food.addons[0].name}} ${{food.addons[0].indv_price}}</div>
-		<button class='btn btn-danger' ng-click='remove(food)'>Remove</button>
+		<button class='btn btn-danger' ng-click='removeFood(food)'>Remove</button>
+	</div>
+
+	<div ng-repeat='promo in promocart track by $index' style='margin-left:40%; background-color:yellow; width:200px;'>
+		<h3>{{promo.name}}</h3>
+		{{promo.size}} ${{promo.price}}<br/><br/>
+		<img src={{food.imageUrl}} style='width:80px; height:auto;'><br/>
+		Drinks: <div ng-repeat='i in promo.drinks | presentfilter'>{{promo.drinks[i.id].name}} x{{promo.drinks[i.id].quantity}}</div><br/>
+		Sides: <div ng-repeat='i in promo.sides | presentfilter'>{{promo.sides[i.id].name}} x{{promo.sides[i.id].quantity}}</div><br/>
+		Toppings: <div ng-repeat='i in promo.mains[0].toppings | presentfilter'>{{promo.mains[0].toppings[i.id].name}} x{{promo.mains[0].toppings[i.id].quantity}}</div><br>
+		Addons: <div ng-repeat='i in promo.addons'>{{promo.addons[0].name}} ${{promo.addons[0].indv_price}}</div>
+		<button class='btn btn-danger' ng-click='removePromo(promo)'>Remove</button>
 	</div>
 </ul>
 

@@ -166,7 +166,6 @@ $scope.combo = true;
 
 		ShoppingCart.add($scope.finalfood);
 		alert('Your order was added to the cart');
-		console.log($scope.finalfood.price);
 		$scope.clearfood();
 	};
 

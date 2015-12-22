@@ -47,12 +47,17 @@
 				</div>
 			</div><br/>
 
-			<div id='toppings'>
-				<div class='toppings' ng-repeat='topping in toppings track by $index'>
-					<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
-						{{topping.name}} x{{topping.quantity}}
-					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
+			<div id='main_food'>
+				<div id='toppings'>
+					<div class='toppings' ng-repeat='topping in toppings track by $index'>
+						<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
+							{{topping.name}} x{{topping.quantity}}
+						<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
+					</div>
 				</div>
+				<button class='btn btn-primary' ng-click='next_food()' ng-disabled='next_food_disabled'>Confirm Toppings</button>
+
+				{{mains[0].toppings}}<br/><br/><br/>{{mains[1].toppings}}
 			</div>
 		</div>
 
@@ -89,5 +94,5 @@
 		</div>
 
 		<br/><br/>
-		<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
+		<button class='btn btn-primary btn-block' ng-click='submitPromo()'>Add to Order</button>
 </div>

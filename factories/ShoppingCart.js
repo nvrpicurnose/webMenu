@@ -2,19 +2,33 @@ angular.module('webMenu')
 
 .service('ShoppingCart', function(){
 	var shopcart = [];
-	var tax = 0;
+	var promocart = [];
+	var promosubtotal = 0;
 	var subTotal = 0;
+	var tax = 0;
 	var total = 0;
 
 	return {
 		add: function(food){
 			shopcart.push(food);
 		},
-		remove: function(food){
-			shopcart.splice(food.$index,1)
+		addpromo: function(promo_bundle){
+			promocart.push(promo_bundle);
+		},
+		promocart_subtotal: function(promosubtot){
+			promosubtotal = promosubtot;
+		},
+		removefood: function(food){
+			shopcart.splice(food.$index,1);
+		},
+		removepromo: function(promo){
+			shopcart.splice(promo.$index,1);
 		},
 		cartcontent: function(){
 			return shopcart;
+		},
+		promocartcontent: function(){
+			return promocart;
 		},
 		subtotal: function(){
 			var subtotal = 0;
@@ -35,6 +49,7 @@ angular.module('webMenu')
 				};
 				subtotal += others;
 			}
+			subtotal += promosubtotal;
 			subTotal = subtotal;
 			return subTotal;
 		},

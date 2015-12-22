@@ -1,28 +1,43 @@
 To Do List
 -------------------------
 
+>>> SPECIALS & COUPONS <<<
 - how to do specials? Should it be a seperate module? [CHALLENGE]
 		- Case 1: Simple discount, 50% off select combos
 		- Case 2: Multiple Items Special, 2 drinks and 2 medium pizzas
 		- Case 3: Free addon with coupon code
 - should the coupons on Promo.html link to a list of valid_foods that the coupon applies to? [EASY]
-- how should coupons be limited? eg. max 1 coupon per item, max 1 coupon per order...etc?
+- how should coupons be limited? eg. max 1 coupon per item, max 1 coupon per order...etc? [LOGICAL PLANNING]
+- foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
+- For PROMOS with multiple main_foods (eg. 2 large pizzas for $12.99), the toppings that get applied to one will get applied to all. Perhaps use .splice()? [MEDIUM]
+- For PROMOS, how to calculate the total amount and show a receipt? [MEDIUM]
+- what about coupons for $1 drinks instead of $1 off drinks? [MEDIUM]
 
 
+
+>>> DELIVERY & BACKEND <<<
 - integration of Google Maps address auto-complete API [EASY w/effort]
 - storage of transaction receipts [EASY]
 - transfer of database onto backend [MEDIUM w/effort]
 
 
+
+
+>>> TOPPINGS <<<
 - dealing with max free toppings vs paid toppings [EASY]
 - allow for additional toppings at extra cost ...note that additional sides and drinks should be ordered seperately [MEDIUM] 
 - What if you buy a solo food item and it comes with 1 free dipping sauce? Dipping sauce is organized as a side dish, but if combo==false, then user cannot choose which dip! [MEDIUM]
 
 
-- cart.html does not show addons for each food item. ng-repeat does not work [FIX ERROR]
-- foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
 
 
 
+>>> SIZES OF FOODS <<<
 - sizes of drinks/sides...aka upgrades. Basic upgrades are implemented, but no limits on how many. See food_detail.html for more details [MEDIUM]
-- when clearing the coupons, the price is reverted back to the original $scope.food.price or $scope.promo.price instead of the selected size's price [MEDIUM]
+
+
+
+
+>>> VISUAL FRONT END <<<
+- selecting a promo food will show an image of the food. However, if no food is yet selected, the image will will be an ugly blank. find a placeholder image. [EASY]
+- cart.html does not show addons for each food item. ng-repeat does not work [FIX ERROR]
