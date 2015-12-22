@@ -9,6 +9,7 @@ angular.module('webMenu')
 			description: '',
 			imageUrl:'https://img.grouponcdn.com/deal/u8CRbgNT1tfTr4DTcABE/HK-2048x1229/v1/c700x420.jpg',
 			valid_foods: [1,3,4,5],
+			valid_promos: [],
 			add_drink_limit: 0,
 			add_side_limit: 0,
 			add_topping_limit: 0,
@@ -33,7 +34,8 @@ angular.module('webMenu')
 			coupon_code: '$3DISC',
 			description: '',
 			imageUrl:'http://blazingonion.com/mobile/images/OnionRings-L.jpg',
-			valid_foods: [1,3,4,5],
+			valid_foods: [1,3,4,5,9,10],
+			valid_promos: [0,1],
 			add_drink_limit: 0,
 			add_side_limit: 0,
 			add_topping_limit: 0,
@@ -58,7 +60,8 @@ angular.module('webMenu')
 			coupon_code: 'FREETOPS',
 			description: '',
 			imageUrl:'http://162.61.226.249/PicOriginal/6609TheOriginalPotatoSalad2.jpg',
-			valid_foods: [1,3,4,5],
+			valid_foods: [1,3,4,5,9,10],
+			valid_promos: [0,1],
 			add_drink_limit: 0,
 			add_side_limit: 0,
 			add_topping_limit: 2,
@@ -83,7 +86,8 @@ angular.module('webMenu')
 			coupon_code: '$1DRINK',
 			description: '',
 			imageUrl:'http://www.mcdonalds.ca/content/dam/Canada/en/Promo/2014-DDD/imgs/coke.png',
-			valid_foods: [1,3,4,5],
+			valid_foods: [1,3,4,5,9,10],
+			valid_promos: [0,1],
 			add_drink_limit: 0,
 			add_side_limit: 0,
 			add_topping_limit: 0,
@@ -109,6 +113,7 @@ angular.module('webMenu')
 			description: '',
 			imageUrl:'http://hostedmedia.reimanpub.com/TOH/Images/Photos/37/300x300/exps41117_ESC1801517D82.jpg',
 			valid_foods: [1,3,4,5],
+			valid_promos: [],
 			add_drink_limit: 0,
 			add_side_limit: 0,
 			add_topping_limit: 0,
@@ -133,7 +138,7 @@ angular.module('webMenu')
 		get: function(){
 			return coupon_list;
 		},
-		//checks if the couponcode entered is valid
+		//checks if the couponcode entered is valid for this food
 		valid_coupon: function(couponcode, food){
 			var validity = false;
 			var exists = false;
@@ -158,7 +163,32 @@ angular.module('webMenu')
 				return validity;
 			}
 		},
-		//retreives the details of the couponcode if valid (see foodCtrl for logical progression)
+		//checks if the couponcode entered is valid for this promo
+		valid_coupon_promo: function(couponcode, promo){
+			var validity = false;
+			var exists = false;
+			var applicable = false;
+			// Condition #1: Checks if couponcode exists
+			for(i=0; i<coupon_list.length; i++){
+				if(coupon_list[i].coupon_code == couponcode){
+					exists = true;
+						// Condition #2: check if this coupon is applicable to this food
+						for(k=0; k<coupon_list[i].valid_promos.length; k++){
+							if(coupon_list[i].valid_promos[k] == promo.id){
+								applicable = true;
+								break;
+							}
+						};
+					break;
+				}
+			};
+			// if both conditions are met, than this coupon is valid
+			if(exists == true && applicable == true){
+				validity = true;
+				return validity;
+			}
+		},
+		//retreives the details of the couponcode if valid (see foodCtrl or specialCtrl for logical progression)
 		retreive_coupon: function(couponcode){
 			var coupon = '';
 			for(i=0; i<coupon_list.length; i++){

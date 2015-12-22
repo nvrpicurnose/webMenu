@@ -16,6 +16,7 @@ To Do List
 
 - dealing with max free toppings vs paid toppings [EASY]
 - allow for additional toppings at extra cost ...note that additional sides and drinks should be ordered seperately [MEDIUM] 
+- What if you buy a solo food item and it comes with 1 free dipping sauce? Dipping sauce is organized as a side dish, but if combo==false, then user cannot choose which dip! [MEDIUM]
 
 
 - cart.html does not show addons for each food item. ng-repeat does not work [FIX ERROR]
@@ -24,3 +25,4 @@ To Do List
 
 
 - sizes of drinks/sides...aka upgrades. Basic upgrades are implemented, but no limits on how many. See food_detail.html for more details [MEDIUM]
+- when clearing the coupons, the price is reverted back to the original $scope.food.price or $scope.promo.price instead of the selected size's price [MEDIUM]

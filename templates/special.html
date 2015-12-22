@@ -1,9 +1,93 @@
 <button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>< Back</button><br/>
 <h1>{{promo.name}}</h1>
 
+<div>SELECT SIZE:
+	<select ng-model='size_selection' ng-change='change_size(size_selection);' ng-options='size.portion for size in sizes'>
+		<option></option>
+	</select>
+	{{food.current_size}} ${{promoprice}}
+</div>
+
+<div>SELECT FOOD:
+	<select ng-model='chosen_food_promo' ng-change='change_food(chosen_food_promo)' ng-options='food.name for food in applicable_foods_array'>
+		<option></option>
+	</select>
+	{{food.name}}
+	<div class='food_thumb'>
+		<img src={{food.imageUrl}} style='width:20%; height:auto;'>
+	</div>
+</div>
+
+<div class='food_detailinfo'>
+
+		<button class='btn btn-warning btn-lrg' ng-click='clearpromo();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
+
+		<div class='customization'>
+			<div id='drinks'>
+				<div class='drink' ng-repeat='drink in drinks track by $index'>
+					<button class='btn btn-primary btn-sml' ng-click='add_drink(drink);calculate_drink()' ng-disabled='maxed_drink'>+</button>
+						{{drink.name}} x{{drink.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_drink(drink); calculate_drink()' ng-disabled='drink.no_negatives'>-</button>
+				</div>
+			</div><br/>
+
+			<div id='sides'>
+				<div class='sides' ng-repeat='side in sides track by $index'>
+					<button class='btn btn-primary btn-sml' ng-click='add_side(side);calculate_side()' ng-disabled='maxed_side'>+</button>
+						{{side.name}} x{{side.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_side(side); calculate_side()' ng-disabled='side.no_negatives'>-</button>
+				</div>
+
+				<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
+				<div>
+					UPGRADES:<br/>
+					<div ng-repeat='upgrade in upgrades track by $index'>
+						<button class='btn btn-primary' ng-click='upgrade_addon(upgrade)'>{{upgrade.name}} for ${{upgrade.indv_price}}</button>
+					</div>
+				</div>
+			</div><br/>
+
+			<div id='toppings'>
+				<div class='toppings' ng-repeat='topping in toppings track by $index'>
+					<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
+						{{topping.name}} x{{topping.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
+				</div>
+			</div>
+		</div>
+
 	<div class='food_thumb'>
 		<img src={{promo.imageUrl}} style='width:100%; height:auto;'>
 	</div>
 	<div style='width:9%; display:inline-block;'>
-		<h3>${{promo.price}}</h3><br/>
+		<h3>${{promoprice}}</h3><br/>
 	</div>
+
+			<div>
+			<div class='coupon_code_enter'>
+				<h3>COUPONS: 50%DISC, $3DISC, $1DRINK, 50%SIDE, FREETOPS</h3>
+				<input type='text' placeholder='COUPON-CODE' name='Coupon Code' ng-model='couponcode'>
+				<button class='btn btn-warning' ng-click='applycoupon(couponcode, promo)'>APPLY</button>
+			</div>
+			ADDONS:<br/>
+			<div ng-repeat='addon in addons'>
+				{{addon.name}} ${{addon.indv_price}}<br/>
+			</div>
+			<button class='btn btn-sml btn-danger' ng-click='clear_coupons()'>Clear Coupons</button>
+			<div id='Addon_drink' ng-hide='!isPaidAddonDrink()' class='ng-hide'>
+				<button class='btn btn-sml btn-danger' ng-click='exitPaidAddonDrink()'>Exit +Drinks</button>
+				<div class='drink' ng-repeat='drink in drinks track by $index'>
+					<button class='btn btn-primary btn-med' ng-click='add_paidDrink(couponcode, drink); calculate_drink()'>{{drink.name}}</button>
+				</div>
+			</div><br/>
+			<div id='Addon_side' ng-hide='!isPaidAddonSide()' class='ng-hide'>
+				<button class='btn btn-sml btn-danger' ng-click='exitPaidAddonSide()'>Exit +Sides</button>
+				<div class='side' ng-repeat='side in sides track by $index'>
+					<button class='btn btn-primary btn-med' ng-click='add_paidSide(couponcode, side); calculate_side()'>{{side.name}}</button>
+				</div>
+			</div><br/>
+		</div>
+
+		<br/><br/>
+		<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
+</div>

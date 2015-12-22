@@ -13,6 +13,10 @@ angular.module('webMenu')
 			var selection_food = angular.copy(selected_food, selection_food);
 			return selection_food.price;
 		},
+		originalpromo_price: function(){
+			var selection_promo = angular.copy(selected_promo, selection_promo);
+			return selection_promo.price;
+		},
 		getpromo: function(){
 			return selected_promo;
 		},

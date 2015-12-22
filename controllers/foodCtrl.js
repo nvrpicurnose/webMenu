@@ -25,11 +25,12 @@ $scope.combo = true;
 	$scope.sizes = $scope.food.sizes;
 	// setting the size price
 	$scope.change_size = function(size_selection){
-		$scope.foodprice = size_selection;
-	};
-	// setting the size
-	$scope.set_size = function(size){
-		$scope.food.current_size = size.portion;
+		if($scope.combo==true){
+			$scope.foodprice = size_selection.combosizeprice;
+		}else{
+			$scope.foodprice = size_selection.sizeprice;
+		};
+		$scope.food.current_size = size_selection.portion;
 	};
 
 
@@ -77,9 +78,9 @@ $scope.combo = true;
 					$scope.paidaddonside = true;
 				};
 				$scope.used_coupons.push(coupon);
-				console.log(couponcode + ' is redeemable as ' + coupon.name);
+				alert(couponcode + ' is redeemable as ' + coupon.name);
 			}else{
-				console.log('The coupon code does not exist or must be entered with final order.');
+				alert('The coupon code does not exist or must be entered with final order.');
 			};
 		};
 

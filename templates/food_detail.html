@@ -1,17 +1,11 @@
 <button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>Back</button><br/>
 <h1>{{food.name}}</h1>
 
-<div ng-if='combo == true'>
-	<select ng-model='size_selection' ng-change='change_size(size_selection)'>
-		<option ng-repeat='size in sizes' value='{{size.combosizeprice}}' ng-click='set_size(size)'>{{size.portion}}</option>
+<div>
+	<select ng-model='size_selection' ng-change='change_size(size_selection)' ng-options='size.portion for size in sizes'>
+		<option></option>
 	</select>
-	{{food.current_size}} ${{size_selection}}
-</div>
-<div ng-if='combo == false'>
-	<select ng-model='size_selection' ng-change='change_size(size_selection)'>
-		<option ng-repeat='size in sizes' value='{{size.sizeprice}}' ng-click='set_size(size)'>{{size.portion}}</option>
-	</select>
-	{{food.current_size}} ${{size_selection}}
+	{{food.current_size}} ${{foodprice}}
 </div>
 
 <div class='food_detailinfo'>
