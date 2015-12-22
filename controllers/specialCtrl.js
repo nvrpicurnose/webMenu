@@ -186,10 +186,11 @@ angular.module('webMenu')
 
 	// to submit the promo order
 	$scope.submitPromo = function(){
-		$scope.promo_bundle = {name:'', price:0, size:'', drinks:[], sides:[], mains:[], addons:[]};
+		$scope.promo_bundle = {name:'', price:0, size:'', imageUrl:'', drinks:[], sides:[], mains:[], addons:[]};
 			$scope.promo_bundle.name = angular.copy($scope.promo.name, $scope.promo_bundle.name);
 			$scope.promo_bundle.price = angular.copy($scope.promo.price, $scope.promo_bundle.price);
 			$scope.promo_bundle.size = angular.copy($scope.promo.current_size, $scope.promo_bundle.size);
+			$scope.promo_bundle.imageUrl = angular.copy($scope.promo.imageUrl, $scope.promo_bundle.imageUrl);
 			$scope.promo_bundle.drinks = angular.copy($scope.drinks, $scope.promo_bundle.drinks);
 			$scope.promo_bundle.sides = angular.copy($scope.sides, $scope.promo_bundle.sides);
 			$scope.promo_bundle.mains = angular.copy($scope.mains, $scope.promo_bundle.mains);

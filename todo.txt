@@ -9,7 +9,7 @@ To Do List
 - should the coupons on Promo.html link to a list of valid_foods that the coupon applies to? [EASY]
 - how should coupons be limited? eg. max 1 coupon per item, max 1 coupon per order...etc? [LOGICAL PLANNING]
 - foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
-- For PROMOS with multiple main_foods (eg. 2 large pizzas for $12.99), the toppings that get applied to one will get applied to all. Perhaps use .splice()? [MEDIUM]
+- For PROMOS with multiple main_foods (eg. 2 large pizzas for $12.99), the toppings that get applied to one will get applied to all. Perhaps use .splice()? Also, there should be a validation where user must select toppings for ALL main_foods before being able to proceed to checkout. [MEDIUM]
 - For PROMOS, how to calculate the total amount and show a receipt? [MEDIUM]
 - what about coupons for $1 drinks instead of $1 off drinks? [MEDIUM]
 
