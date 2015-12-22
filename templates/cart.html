@@ -23,7 +23,7 @@ Total: ${{total()}}<br /><br/>
 	<div ng-repeat='promo in promocart track by $index' style='margin-left:40%; background-color:yellow; width:200px;'>
 		<h3>{{promo.name}}</h3>
 		{{promo.size}} ${{promo.price}}<br/><br/>
-		<img src={{food.imageUrl}} style='width:80px; height:auto;'><br/>
+		<img src={{promo.imageUrl}} style='width:80px; height:auto;'><br/>
 		Drinks: <div ng-repeat='i in promo.drinks | presentfilter'>{{promo.drinks[i.id].name}} x{{promo.drinks[i.id].quantity}}</div><br/>
 		Sides: <div ng-repeat='i in promo.sides | presentfilter'>{{promo.sides[i.id].name}} x{{promo.sides[i.id].quantity}}</div><br/>
 		Toppings: <div ng-repeat='i in promo.mains[0].toppings | presentfilter'>{{promo.mains[0].toppings[i.id].name}} x{{promo.mains[0].toppings[i.id].quantity}}</div><br>
