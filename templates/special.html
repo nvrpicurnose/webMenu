@@ -1,28 +1,38 @@
 <button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>< Back</button><br/>
-<h1>{{promo.name}}</h1>
 
-<div>SELECT SIZE:
-	<select ng-model='size_selection' ng-change='change_size(size_selection);' ng-options='size.portion for size in sizes'>
-		<option></option>
-	</select>
-	{{food.current_size}} ${{promoprice}}
+<div class='col-xs-6'>
+	<h1>{{promo.name}}</h1>
+
+	<div>SELECT SIZE:
+		<select ng-model='size_selection' ng-change='change_size(size_selection);' ng-options='size.portion for size in sizes'>
+			<option></option>
+		</select>
+		{{food.current_size}} ${{promoprice}}
+	</div>
+
+	<div>SELECT FOOD:
+		<select ng-model='chosen_food_promo' ng-change='change_food(chosen_food_promo)' ng-options='food.name for food in applicable_foods_array'>
+			<option></option>
+		</select>
+		{{food.name}}
+		<div class='food_thumb'>
+			<img src={{food.imageUrl}} style='width:20%; height:auto;'>
+		</div>
+	</div>
+
+	<button class='btn btn-warning btn-lrg' ng-click='clearpromo();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
 </div>
 
-<div>SELECT FOOD:
-	<select ng-model='chosen_food_promo' ng-change='change_food(chosen_food_promo)' ng-options='food.name for food in applicable_foods_array'>
-		<option></option>
-	</select>
-	{{food.name}}
-	<div class='food_thumb'>
-		<img src={{food.imageUrl}} style='width:20%; height:auto;'>
-	</div>
+<div class='col-xs-6'>
+	<h3>${{promoprice}}</h3><br/>
+	<img src={{promo.imageUrl}} style='width:100%; height:auto;'>
 </div>
 
 <div class='food_detailinfo'>
 
-		<button class='btn btn-warning btn-lrg' ng-click='clearpromo();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
 
 		<div class='customization'>
+			<div class='col-xs-6' style='background-color:rgba(255,0,0,0.2)'>
 			<div id='drinks'>
 				<div class='drink' ng-repeat='drink in drinks track by $index'>
 					<button class='btn btn-primary btn-sml' ng-click='add_drink(drink);calculate_drink()' ng-disabled='maxed_drink'>+</button>
@@ -30,26 +40,22 @@
 					<button class='btn btn-primary btn-sml' ng-click='remove_drink(drink); calculate_drink()' ng-disabled='drink.no_negatives'>-</button>
 				</div>
 			</div><br/>
+			</div>
 
+			<div class='col-xs-6' style='background-color:rgba(51,204,255,0.3);'>
 			<div id='sides'>
 				<div class='sides' ng-repeat='side in sides track by $index'>
 					<button class='btn btn-primary btn-sml' ng-click='add_side(side);calculate_side()' ng-disabled='maxed_side'>+</button>
 						{{side.name}} x{{side.quantity}}
 					<button class='btn btn-primary btn-sml' ng-click='remove_side(side); calculate_side()' ng-disabled='side.no_negatives'>-</button>
 				</div>
-
-				<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
-				<div>
-					UPGRADES:<br/>
-					<div ng-repeat='upgrade in upgrades track by $index'>
-						<button class='btn btn-primary' ng-click='upgrade_addon(upgrade)'>{{upgrade.name}} for ${{upgrade.indv_price}}</button>
-					</div>
-				</div>
 			</div><br/>
+			</div>
 
+			<div class='col-xs-12' style='height:10vh;background-color:rgba(255,255,0,0.3);'>
 			<div id='main_food'>
 				<div id='toppings'>
-					<div class='toppings' ng-repeat='topping in toppings track by $index'>
+					<div class='toppings' ng-repeat='topping in toppings track by $index' style='display:inline-block;'>
 						<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
 							{{topping.name}} x{{topping.quantity}}
 						<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
@@ -59,14 +65,16 @@
 
 				{{mains[0].toppings}}<br/><br/><br/>{{mains[1].toppings}}
 			</div>
+			</div>
 		</div>
 
-	<div class='food_thumb'>
-		<img src={{promo.imageUrl}} style='width:100%; height:auto;'>
-	</div>
-	<div style='width:9%; display:inline-block;'>
-		<h3>${{promoprice}}</h3><br/>
-	</div>
+		<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
+				<div>
+					UPGRADES:<br/>
+					<div ng-repeat='upgrade in upgrades track by $index'>
+						<button class='btn btn-primary' ng-click='upgrade_addon(upgrade)'>{{upgrade.name}} for ${{upgrade.indv_price}}</button>
+					</div>
+				</div>
 
 			<div>
 			<div class='coupon_code_enter'>

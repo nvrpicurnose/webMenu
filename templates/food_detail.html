@@ -1,59 +1,69 @@
 <button class='btn btn-lrg btn-danger' name='backbutton' ng-click='back()'>Back</button><br/>
-<h1>{{food.name}}</h1>
 
-<div>
-	<select ng-model='size_selection' ng-change='change_size(size_selection)' ng-options='size.portion for size in sizes'>
-		<option></option>
-	</select>
-	{{food.current_size}} ${{foodprice}}
-</div>
+
+
 
 <div class='food_detailinfo'>
 
+	<div class='col-xs-6'>
+		<h1>{{food.name}}</h1>
+
+		<div>
+			<select ng-model='size_selection' ng-change='change_size(size_selection)' ng-options='size.portion for size in sizes'>
+				<option></option>
+			</select>
+			{{food.current_size}} ${{foodprice}}
+		</div>
+
 		<button class='btn btn-success btn-lrg' id='combo_button' ng-click='toggleCombo()'>Combo: {{combo}}</button> <-- FIX THIS TO HAVE ACTIVE/INACTIVE CSS CLASS <br/>
 		<button class='btn btn-warning btn-lrg' ng-click='clearfood();calculate_drink();calculate_side();calculate_topping()'>Clear</button> 
+	</div>
+
+	<div class='col-xs-6'>
+		<h3>${{foodprice}}</h3>
+		<img src={{food.imageUrl}} style='width:100%; height:auto;'>
+	</div>
 
 		<div class='customization'>
+			<div class='col-xs-6' style='background-color:rgba(255,0,0,0.2)'>
 			<div id='drinks' ng-hide='!isCombo()' class='ng-hide'>
 				<div class='drink' ng-repeat='drink in drinks track by $index'>
 					<button class='btn btn-primary btn-sml' ng-click='add_drink(drink);calculate_drink()' ng-disabled='maxed_drink'>+</button>
 						{{drink.name}} x{{drink.quantity}}
 					<button class='btn btn-primary btn-sml' ng-click='remove_drink(drink); calculate_drink()' ng-disabled='drink.no_negatives'>-</button>
 				</div>
+			</div>
 			</div><br/>
 
+			<div class='col-xs-6' style='background-color:rgba(51,204,255,0.3);'>
 			<div id='sides' ng-hide='!isCombo()' class='ng-hide'>
 				<div class='sides' ng-repeat='side in sides track by $index'>
 					<button class='btn btn-primary btn-sml' ng-click='add_side(side);calculate_side()' ng-disabled='maxed_side'>+</button>
 						{{side.name}} x{{side.quantity}}
 					<button class='btn btn-primary btn-sml' ng-click='remove_side(side); calculate_side()' ng-disabled='side.no_negatives'>-</button>
 				</div>
+			</div>
+			</div><br/>
 
-				<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
+
+			<div class='col-xs-12' style='height:10vh;background-color:rgba(255,255,0,0.3);'>
+			<div id='toppings'>
+				<div class='toppings' ng-repeat='topping in toppings track by $index' style='display:inline-block;'>
+					<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
+						{{topping.name}} x{{topping.quantity}}
+					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
+				</div>
+			</div>
+			</div>
+
+			<!-- FIX THIS. UPGRADES SHOULD BE LIMITED TO THE #drinks or #sides-->
 				<div>
 					UPGRADES:<br/>
 					<div ng-repeat='upgrade in upgrades track by $index'>
 						<button class='btn btn-primary' ng-click='upgrade_addon(upgrade)'>{{upgrade.name}} for ${{upgrade.indv_price}}</button>
 					</div>
 				</div>
-			</div><br/>
-
-			<div id='toppings'>
-				<div class='toppings' ng-repeat='topping in toppings track by $index'>
-					<button class='btn btn-primary btn-sml' ng-click='add_topping(topping);calculate_topping()' ng-disabled='maxed_topping'>+</button>
-						{{topping.name}} x{{topping.quantity}}
-					<button class='btn btn-primary btn-sml' ng-click='remove_topping(topping); calculate_topping()' ng-disabled='topping.no_negatives'>-</button>
-				</div>
-			</div>
 		</div>
-
-		<div class='food_thumb'>
-			<img src={{food.imageUrl}} style='width:100%; height:auto;'>
-		</div>
-		<div style='width:9%; display:inline-block;'>
-			<h3>${{foodprice}}</h3><br/>
-		</div>
-		<br/><br/>
 
 		<div>
 			<div class='coupon_code_enter'>
@@ -80,6 +90,6 @@
 			</div><br/>
 		</div>
 
-		<br/><br/>
+		<br/>
 		<button class='btn btn-primary btn-block' ng-click='submitOrder()'>Add to Order</button>
 </div>
