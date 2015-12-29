@@ -1,6 +1,8 @@
 To Do List
 -------------------------
-
+>>> BASIC FRONT END SELLABLE MODEL <<<
+- Make a front end that is nice enough to show off
+- Use an example resturant
 
 
 >>> SPECIALS & COUPONS <<<

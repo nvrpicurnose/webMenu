@@ -39,4 +39,8 @@ angular.module('webMenu')
 		ShoppingCart.promocart_subtotal($scope.promosubtotal);
 	})();
 
+	$scope.order_confirmed = function(){
+		alert('Your order was confirmed!');
+	};
+
 }]);
