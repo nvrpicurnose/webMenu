@@ -26,7 +26,7 @@ Total: ${{total()}}<br /><br/>
 		<img src={{promo.imageUrl}} style='width:80px; height:auto;'><br/>
 		Drinks: <div ng-repeat='i in promo.drinks | presentfilter'>{{promo.drinks[i.id].name}} x{{promo.drinks[i.id].quantity}}</div><br/>
 		Sides: <div ng-repeat='i in promo.sides | presentfilter'>{{promo.sides[i.id].name}} x{{promo.sides[i.id].quantity}}</div><br/>
-		Toppings: <div ng-repeat='i in promo.mains[0].toppings | presentfilter'>{{promo.mains[0].toppings[i.id].name}} x{{promo.mains[0].toppings[i.id].quantity}}</div><br>
+		Toppings: <div ng-repeat='i in promo.mains[0].toppings | presentfilter'>{{promo.mains[0].toppings}} x{{promo.mains[0].toppings[i.id].quantity}}</div><br>
 		Addons: <div ng-repeat='i in promo.addons'>{{promo.addons[0].name}} ${{promo.addons[0].indv_price}}</div>
 		<button class='btn btn-danger' ng-click='removePromo(promo)'>Remove</button>
 	</div>

@@ -63,9 +63,9 @@
 			</div>
 			ADDONS:<br/>
 			<div ng-repeat='addon in addons'>
-				{{addon.name}} ${{addon.indv_price}}<br/>
+				{{addon.name}} ${{addon.indv_price}} 
+				<button class='btn btn-sml btn-danger' ng-click='clear_coupon(addon)'>Clear Coupons</button><br/>
 			</div>
-			<button class='btn btn-sml btn-danger' ng-click='clear_coupons()'>Clear Coupons</button>
 			<div id='Addon_drink' ng-hide='!isPaidAddonDrink()' class='ng-hide'>
 				<button class='btn btn-sml btn-danger' ng-click='exitPaidAddonDrink()'>Exit +Drinks</button>
 				<div class='drink' ng-repeat='drink in drinks track by $index'>

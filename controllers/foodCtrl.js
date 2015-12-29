@@ -83,16 +83,27 @@ $scope.combo = true;
 				alert('The coupon code does not exist or must be entered with final order.');
 			};
 		};
-
-		console.log($scope.used_coupons);
 	};
+
 
 	// clear coupons
-	$scope.clear_coupons = function(){
-		$scope.used_coupons = [];
+	$scope.clear_coupon = function(addon){
 		$scope.addons = [];
+		$scope.used_coupons = [];
 		$scope.foodprice = $scope.food.price;
 	};
+	/*
+	// clear coupons [redo this to be more sophisticated]
+	$scope.clear_coupon = function(addon){
+		$scope.addons.splice(addon.$index,1);
+		$scope.used_coupons.splice();
+		$scope.coupon_price_change();
+	};
+	// to readjust the price of a food item after removing a coupon
+	$scope.coupon_price_change = function(){
+	
+	};
+	*/
 
 	// identify if there is a paid addon drink option, usually via coupon. Toggles ng-hide on addon div
 	$scope.paidaddondrink = false;
@@ -107,15 +118,15 @@ $scope.combo = true;
 	};
 	// adds the addon drink to the order. Does not count towards the drink limit.
 	$scope.add_paidDrink = function(couponcode, drink){
-			var modified_drink = drink;
-			var org_drink = drink;
-			var retreived_coupon = Coupons.retreive_coupon(couponcode);
-			modified_drink.indv_price -= org_drink.indv_price*retreived_coupon.addon_discount_percent;
-			modified_drink.indv_price -= retreived_coupon.addon_discount_dollar;
-			$scope.addons.push(modified_drink);
-			$scope.paidaddondrink = false;
-			console.log($scope.addons);
-			console.log(modified_drink.indv_price);
+		var modified_drink = drink;
+		var org_drink = drink;
+		var retreived_coupon = Coupons.retreive_coupon(couponcode);
+		modified_drink.indv_price -= org_drink.indv_price*retreived_coupon.addon_discount_percent;
+		modified_drink.indv_price -= retreived_coupon.addon_discount_dollar;
+		$scope.addons.push(modified_drink);
+		$scope.paidaddondrink = false;
+		console.log($scope.addons);
+		console.log(modified_drink.indv_price);
 	};
 
 	// identify if there is a paid addon side option, usually via coupon. Toggles ng-hide on addon div

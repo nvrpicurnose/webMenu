@@ -36,13 +36,13 @@ angular.module('webMenu')
 	$scope.sizes = $scope.promo.sizes;
 	// setting the size price
 	$scope.change_size = function(size_selection){
+		$scope.promo.current_size = size_selection.portion;
 		$scope.promoprice = size_selection.promoprice;
 			for(z=0;z<$scope.sizes.length;z++){
 				if($scope.sizes[z]==size_selection){
 					$scope.chosen_size = z;
 				}
-			}
-		$scope.promo.current_size = size_selection.portion;
+			};
 
 		//to reset the max drinks/sides/toppings and calculate();
 		$scope.max_drinks = $scope.promo.sizes[$scope.chosen_size].drink_limit;
@@ -61,7 +61,7 @@ angular.module('webMenu')
 		$scope.food = $scope.chosen_food_promo;
 		$scope.mains = [];
 		for(b=0; b<$scope.food_quantity;b++){
-			$scope.mains[b] = $scope.food;
+			$scope.mains[b] = [];
 		};
 	};
 
@@ -181,15 +181,32 @@ angular.module('webMenu')
 
 
 
-
+	// to save this main_food into the mains[0] array
+	$scope.next_food_counter = 0;
+	$scope.next_food_disabled = false; // if this is true, the next_food button will be disabled
+	$scope.next_food = function(){
+		$scope.mains[$scope.next_food_counter].toppings = angular.copy($scope.toppings);
+		$scope.toppings = angular.copy($scope.all_toppings,$scope.toppings);
+		//increments the next_food_counter
+		$scope.next_food_counter++;
+		//resets toppings for next main_food
+		$scope.all_toppings = SideFoods.get_toppings();
+		$scope.toppings = angular.copy($scope.all_toppings,$scope.toppings);
+		$scope.calculate_topping();
+		//will check if the main_food has reached it max limit as defined by $scope.food_quantity
+		if($scope.next_food_counter>=$scope.food_quantity){
+			$scope.next_food_disabled = true;
+		};
+	};
 
 
 	// to submit the promo order
+	// also shows the attributes of the promo object
 	$scope.submitPromo = function(){
 		$scope.promo_bundle = {name:'', price:0, size:'', imageUrl:'', drinks:[], sides:[], mains:[], addons:[]};
 			$scope.promo_bundle.name = angular.copy($scope.promo.name, $scope.promo_bundle.name);
-			$scope.promo_bundle.price = angular.copy($scope.promo.price, $scope.promo_bundle.price);
-			$scope.promo_bundle.size = angular.copy($scope.promo.current_size, $scope.promo_bundle.size);
+			$scope.promo_bundle.price = angular.copy($scope.promoprice);
+			$scope.promo_bundle.size = angular.copy($scope.promo.current_size);
 			$scope.promo_bundle.imageUrl = angular.copy($scope.promo.imageUrl, $scope.promo_bundle.imageUrl);
 			$scope.promo_bundle.drinks = angular.copy($scope.drinks, $scope.promo_bundle.drinks);
 			$scope.promo_bundle.sides = angular.copy($scope.sides, $scope.promo_bundle.sides);
@@ -313,25 +330,6 @@ angular.module('webMenu')
 	// to upgrade drinks or sides to a larger size
 	$scope.upgrade_addon = function(upgrade){
 		$scope.addons.push(upgrade);
-	};
-
-
-	// to save this main_food into the mains[0] array
-	$scope.next_food_counter = 0;
-	$scope.next_food_disabled = false; // if this is true, the next_food button will be disabled
-	$scope.next_food = function(){
-		$scope.current_toppings = angular.copy($scope.toppings, $scope.current_toppings);
-		$scope.mains[$scope.next_food_counter].toppings = $scope.current_toppings;
-		//increments the next_food_counter
-		$scope.next_food_counter++;
-		//resets toppings for next main_food
-		$scope.all_toppings = SideFoods.get_toppings();
-		$scope.toppings = angular.copy($scope.all_toppings,$scope.toppings);
-		$scope.calculate_topping();
-		//will check if the main_food has reached it max limit as defined by $scope.food_quantity
-		if($scope.next_food_counter>=$scope.food_quantity){
-			$scope.next_food_disabled = true;
-		};
 	};
 
 }]);

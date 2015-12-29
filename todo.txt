@@ -1,17 +1,14 @@
 To Do List
 -------------------------
 
+
+
 >>> SPECIALS & COUPONS <<<
-- how to do specials? Should it be a seperate module? [CHALLENGE]
-		- Case 1: Simple discount, 50% off select combos
-		- Case 2: Multiple Items Special, 2 drinks and 2 medium pizzas
-		- Case 3: Free addon with coupon code
 - should the coupons on Promo.html link to a list of valid_foods that the coupon applies to? [EASY]
 - how should coupons be limited? eg. max 1 coupon per item, max 1 coupon per order...etc? [LOGICAL PLANNING]
-- foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
-- For PROMOS with multiple main_foods (eg. 2 large pizzas for $12.99), the toppings that get applied to one will get applied to all. Perhaps use .splice()? Also, there should be a validation where user must select toppings for ALL main_foods before being able to proceed to checkout. [MEDIUM]
 - For PROMOS, how to calculate the total amount and show a receipt? [MEDIUM]
 - what about coupons for $1 drinks instead of $1 off drinks? [MEDIUM]
+- foodCtrl.js when removing the coupon popup (ng-hide), all addons are removed from the array instead of only drinks or only sides. Same with used_coupons array [MEDIUM]
 
 
 
@@ -31,7 +28,6 @@ To Do List
 
 
 
-
 >>> SIZES OF FOODS <<<
 - sizes of drinks/sides...aka upgrades. Basic upgrades are implemented, but no limits on how many. See food_detail.html for more details [MEDIUM]
 
@@ -41,3 +37,4 @@ To Do List
 >>> VISUAL FRONT END <<<
 - selecting a promo food will show an image of the food. However, if no food is yet selected, the image will will be an ugly blank. find a placeholder image. [EASY]
 - cart.html does not show addons for each food item. ng-repeat does not work [FIX ERROR]
+- the page that lets you choose your promos should be incremental, which means it should show a whole page for the toppings of each pizza and then a whole page for drinks...etc until the last page to review & confirm. This also acts as validation that the toppings for all mains are added. [MEDIUM]
